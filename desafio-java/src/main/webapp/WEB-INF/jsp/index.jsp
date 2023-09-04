@@ -30,7 +30,7 @@
 			flex-direction: row-reverse;
 		}
 		td {
-			max-width: 100px;
+			max-width: 80px;
 			word-wrap: break-word;
 		}
 	</style>
@@ -77,6 +77,13 @@
 	</tr>
 	</thead>
 	<tbody>
+   	<c:if test="${empty projetoList}">
+   		<tr>
+   			<td colspan="12">
+		   		Nenhum projeto foi encontrado.
+   			</td>
+   		</tr>
+	</c:if>
     <c:forEach var="p" items="${projetoList}">
    		<tr id="${p.id}">
 			<td>${p.id}</td>
@@ -93,7 +100,7 @@
 			<td><a href="javascript:excluir('${p.id}')" class="link-danger">Excluir</a></td>
 		</tr>
     </c:forEach>
-    <tbody>
+    </tbody>
 </table>
 
 <div class="buttons">

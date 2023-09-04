@@ -35,10 +35,6 @@ public class ProjetoService {
 		projetoRepository.save(projeto);
 	}
 	
-	public List<Projeto> buscarTodos() {
-		return projetoRepository.findAll();
-	}
-	
 	public List<Projeto> buscarTodosOrderById() {
 		return projetoRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
 	}

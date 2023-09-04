@@ -1,7 +1,5 @@
 package br.com.biblioteca.service;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -34,7 +32,6 @@ public class PessoaService {
 	}
 	
 	public List<Pessoa> buscarTodos(Set<Long> ids) {
-//		Set<Long> set = new HashSet<>(Arrays.asList(ids));
 		return pessoaRepository.findAllById(ids);
 	}
 

@@ -46,7 +46,7 @@ public class ProjetoController {
 		
 		projetoService.salvar(projetoDto);
 		
-		model.addAttribute("projetoList", projetoService.buscarTodos());
+		model.addAttribute("projetoList", projetoService.buscarTodosOrderById());
 		
 		return "index";
 	}

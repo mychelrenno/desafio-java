@@ -75,7 +75,7 @@
 		
 		<div class="form-group">
 			<label for="orcamento">Orçamento</label>
-			<form:input id="orcamento" class="form-control" pattern="###,##0.00" placeholder="12345678,90" path="orcamento"/>
+			<form:input id="orcamento" class="form-control" placeholder="12345678,90" path="orcamento"/>
 			<form:errors path="orcamento"/>
 		</div>
 		
