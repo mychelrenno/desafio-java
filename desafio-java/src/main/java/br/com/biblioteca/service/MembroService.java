@@ -44,4 +44,9 @@ public class MembroService {
 		return membroSet;
 	}
 	
+	@Transactional
+	public void deleteAllByProjetoId(Long projetoId) {
+		membroRepository.deleteAllByProjetoId(projetoId);
+	}
+	
 }

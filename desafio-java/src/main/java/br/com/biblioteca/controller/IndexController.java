@@ -21,7 +21,7 @@ public class IndexController {
 	public String home(Model model, HttpServletRequest httpServletRequest) {
 		
 		
-		model.addAttribute("projetoList", projetoService.buscarTodos());
+		model.addAttribute("projetoList", projetoService.buscarTodosOrderById());
 		
 		return "index";
 	}

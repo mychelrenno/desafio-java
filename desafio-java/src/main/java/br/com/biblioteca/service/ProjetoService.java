@@ -6,9 +6,11 @@ import java.util.Set;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import br.com.biblioteca.dto.ProjetoDto;
+import br.com.biblioteca.enums.StatusEnum;
 import br.com.biblioteca.model.Pessoa;
 import br.com.biblioteca.model.Projeto;
 import br.com.biblioteca.repository.ProjetoRepository;
@@ -37,12 +39,22 @@ public class ProjetoService {
 		return projetoRepository.findAll();
 	}
 	
+	public List<Projeto> buscarTodosOrderById() {
+		return projetoRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
+	}
+	
 	public Projeto buscarPorId(Long id) {
 		return projetoRepository.getById(id);
 	}
 	
 	public void excluir(Long projetoId) {
+		membroService.deleteAllByProjetoId(projetoId);
 		projetoRepository.deleteById(projetoId);
+	}
+	
+	public void excluir(Projeto projeto) {
+		membroService.deleteAllByProjetoId(projeto.getId());
+		projetoRepository.deleteById(projeto.getId());
 	}
 	
 	public ProjetoDto convertEntityToDto(Projeto p) {
@@ -73,6 +85,17 @@ public class ProjetoService {
 		}
 		
 		return projeto;
+	}
+	
+	public String validaExclusao(Projeto projeto) {
+		StatusEnum status = projeto.getStatus();
+		String message = "";
+		if (status.getCodigo() == StatusEnum.INICIADO.getCodigo()
+			|| status.getCodigo() == StatusEnum.EM_ANDAMENTO.getCodigo()
+			|| status.getCodigo() == StatusEnum.ENCERRADO.getCodigo()) {
+			message = "Não é possível excluir projetos com os status: iniciado, em andamento e encerrado.";
+		}
+		return message;
 	}
 
 }

@@ -26,9 +26,8 @@
 		        method: 'delete',
 		        url: "/projeto/excluir",
 		        data : {id: id},
-// 		        contentType: "application/json",
 		        success: function (response, status, xhr) {
-		        	alert("Projeto excluido com sucesso");
+		        	alert(response);
 		        	$("tr#"+id).remove();
 		        },
 		        error: function (response) {
@@ -59,6 +58,7 @@
 <table class="table table-striped">
 	<thead>
 	<tr>
+		<th>#</th>
 		<th>Nome</th>
 		<th>Descrição</th>
 		<th>Gerente</th>
@@ -75,6 +75,7 @@
 	<tbody>
     <c:forEach var="p" items="${projetoList}">
     	<tr id="${p.id}">
+			<td>${p.id}</td>
 			<td>${p.nome}</td>
 			<td style="width:50px"><p>${p.descricao}</p></td>
 			<td>${p.gerente.nome}</td>

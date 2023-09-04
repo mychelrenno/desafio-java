@@ -65,14 +65,15 @@ public class ProjetoController {
 	
 	@DeleteMapping("/excluir")
 	public ResponseEntity<?> excluirProjeto(Model model, HttpServletRequest httpServletRequest, @RequestParam("id") Long id) {
-		
-		projetoService.excluir(id);
-		
-		model.addAttribute("projetoList", projetoService.buscarTodos());
-		
-//		return "index";
-		
-		return new ResponseEntity<>(HttpStatus.OK);
+		Projeto projeto = projetoService.buscarPorId(id);
+		String message = projetoService.validaExclusao(projeto);
+		HttpStatus hs = HttpStatus.UNAUTHORIZED;
+		if (message == null || message.isEmpty()) {
+			projetoService.excluir(id);
+			message = "Projeto excluido com sucesso.";
+			hs = HttpStatus.OK;
+		}
+		return new ResponseEntity<>(message, hs);
 	}
 	
 }

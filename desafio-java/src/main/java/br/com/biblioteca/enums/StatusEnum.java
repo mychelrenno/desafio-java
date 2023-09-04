@@ -5,10 +5,10 @@ public enum StatusEnum {
 	EM_ANALISE(1, "Em análise"),
 	ANALISE_REALIZADA(2, "Análise realizada"),
 	ANALISE_APROVADA(3, "Análise aprovada"),
-	INICIADO(4, "Iniciado"),
+	INICIADO(4, "Iniciado"), //
 	PLANEJADO(5, "Planejado"),
-	EM_ANDAMENTO(6, "Em andamento"),
-	ENCERRADO(7, "Encerrado"),
+	EM_ANDAMENTO(6, "Em andamento"), //
+	ENCERRADO(7, "Encerrado"), //
 	CANCELADO(8, "Cancelado");
 	
 	private Integer codigo;
