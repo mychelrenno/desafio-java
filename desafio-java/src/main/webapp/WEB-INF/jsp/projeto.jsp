@@ -20,12 +20,12 @@
     		width:980px;
     		margin-top: 10px;
      	}
-     	div.button-submit {
+     	div.buttons {
    		    display: flex;
 		    flex-direction: row-reverse;
 		    margin-top: 10px;
      	}
-     	.button-submit > input {
+     	.buttons > input {
      		margin-left: 10px;
      	}
      	label {
@@ -75,7 +75,7 @@
 		
 		<div class="form-group">
 			<label for="orcamento">Orçamento</label>
-			<form:input id="orcamento" class="form-control" pattern="" placeholder="12345678,90" path="orcamento"/>
+			<form:input id="orcamento" class="form-control" pattern="###,##0.00" placeholder="12345678,90" path="orcamento"/>
 			<form:errors path="orcamento"/>
 		</div>
 		
@@ -111,7 +111,7 @@
 			<form:errors path="membros"/>
 		</div>
 		
-		<div class="button-submit">
+		<div class="buttons">
 			<input class="btn btn-primary" type="submit" value="Salvar"/>
 			<input type="button" class="btn btn-secondary" onclick="document.location='/'" value="Voltar"/>
 		</div>

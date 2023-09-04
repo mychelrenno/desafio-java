@@ -32,7 +32,7 @@ public class ProjetoController {
 	ProjetoService projetoService;
 
 	@GetMapping
-	public String home(Model model, HttpServletRequest httpServletRequest) {
+	public String novo(Model model, HttpServletRequest httpServletRequest) {
 		
 		model.addAttribute("projeto", new ProjetoDto());
 		model.addAttribute("gerenteList", pessoaService.buscarTodosGerentes());

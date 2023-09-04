@@ -16,9 +16,27 @@
     <script src="<c:url value="/static/node_modules/bootstrap/dist/js/bootstrap.min.js"/>"></script>
     <script src="<c:url value="/static/node_modules/jquery/dist/jquery.min.js"/>"></script>
 
-	<script type="text/javascript">
+	<style>
+		body {
+			display: flex;
+			justify-content: center;
+		}
+		div.conteudo {
+			width:980px;
+			margin-top: 10px;
+		}
+		div.buttons {
+			display: flex;
+			flex-direction: row-reverse;
+		}
+		td {
+			max-width: 100px;
+			word-wrap: break-word;
+		}
+	</style>
+
+	<script>
 		function editar(id) {
-			alert("mychel edita " + id);
 			document.location = "/projeto/editar?id=" + id;
 		}
 		function excluir(id) {
@@ -35,26 +53,12 @@
 		        }
 		    });
 		}
-		function novoProjeto() {
-// 			alert("Novo Projeto");
-			document.location = "/projeto";
-		}
 	</script>
 	
-	<style type="text/css">
-		.div-flex-centraliza {
-			display: flex;
-			align-items: center;
-			flex-direction: column;
-		}
-	</style>
-
 </head>
-<body class="div-flex-centraliza">
+<body>
+<div class="conteudo">
 
-<div style="width:980px; margin-top: 20px">
-
-<div>
 <table class="table table-striped">
 	<thead>
 	<tr>
@@ -74,10 +78,10 @@
 	</thead>
 	<tbody>
     <c:forEach var="p" items="${projetoList}">
-    	<tr id="${p.id}">
+   		<tr id="${p.id}">
 			<td>${p.id}</td>
 			<td>${p.nome}</td>
-			<td style="width:50px"><p>${p.descricao}</p></td>
+			<td>${p.descricao}</td>
 			<td>${p.gerente.nome}</td>
 			<td><fmt:formatDate pattern="dd/MM/yyyy" value="${p.dataInicio}" /></td>
 			<td><fmt:formatDate pattern="dd/MM/yyyy" value="${p.dataPrevisao}" /></td>
@@ -91,14 +95,11 @@
     </c:forEach>
     <tbody>
 </table>
+
+<div class="buttons">
+	<button class="btn btn-primary" onclick="document.location='/projeto'">Novo Projeto</button>
 </div>
 
-<div style="display: flex; justify-content: flex-end;">
-	<button type="button" class="btn btn-primary" onclick="novoProjeto();">Novo Projeto</button>
 </div>
-</div>
-
-
-
 </body>
 </html>

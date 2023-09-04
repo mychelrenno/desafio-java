@@ -38,7 +38,7 @@ public class ProjetoDto {
 	
 	private StatusEnum status;
 	
-	@NumberFormat(style=Style.CURRENCY, pattern = "###,###.##")
+	@NumberFormat(style=Style.CURRENCY, pattern = "###.##0,00")
 	private BigDecimal orcamento;
 	
 	private RiscoEnum risco;

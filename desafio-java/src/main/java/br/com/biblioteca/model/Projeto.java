@@ -59,7 +59,7 @@ public class Projeto {
 	@Column(name = "status")
 	private StatusEnum status;
 	
-	@NumberFormat(style=Style.CURRENCY, pattern = "###,###.##")
+	@NumberFormat(style=Style.CURRENCY, pattern = "###,##0.00")
 	@Column(name = "orcamento")
 	private BigDecimal orcamento;
 	
