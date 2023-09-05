@@ -31,7 +31,7 @@ class MembroRepositoryTest {
 	@Test
 	@DisplayName("testa a persistencia da classe membro, onde nao deve ser permitido membro sem projeto e pessoa.")
 //	@ExpectedException(Exception.class)
-	void membroSemPessoaEProjeto() {
+	void saveMembroSemPessoaEProjeto() {
 		Membro m = new Membro();
 	    assertThrows(Exception.class, () -> {
 	    	membroRepository.save(m);
@@ -40,12 +40,13 @@ class MembroRepositoryTest {
 	
 	@Test
 	@DisplayName("teste de persistencia da classe membro, com projeto e pessoa.")
-	void membroComPessoaEProjeto() {
+	void saveMembroComPessoaEProjeto() {
 		Pessoa pessoa = createPessoa("nome qualquer", new Date(), "12345678901", true);
 		Projeto projeto = createProjeto();
 		Membro membro = new Membro();
 		membro.setMembro(pessoa);
 		membro.setProjeto(projeto);
+		
 		membro = membroRepository.save(membro);
 		
 		assertNotNull(membro.getId());
