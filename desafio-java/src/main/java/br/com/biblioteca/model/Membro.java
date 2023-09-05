@@ -21,11 +21,11 @@ public class Membro {
 	private Long id;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_membro", referencedColumnName = "id")
+	@JoinColumn(name = "id_membro", referencedColumnName = "id", nullable = false)
 	private Pessoa membro;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_projeto", referencedColumnName = "id")
+	@JoinColumn(name = "id_projeto", referencedColumnName = "id", nullable = false)
 	private Projeto projeto;
 
 }

@@ -1,5 +1,10 @@
 package br.com.biblioteca.repository;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.util.Date;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +14,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.ActiveProfiles;
 
 import br.com.biblioteca.model.Membro;
+import br.com.biblioteca.model.Pessoa;
+import br.com.biblioteca.model.Projeto;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -22,10 +29,42 @@ class MembroRepositoryTest {
 	private TestEntityManager em;
 	
 	@Test
-	@DisplayName("")
-	void test() {
+	@DisplayName("testa a persistencia da classe membro, onde nao deve ser permitido membro sem projeto e pessoa.")
+//	@ExpectedException(Exception.class)
+	void membroSemPessoaEProjeto() {
 		Membro m = new Membro();
-		membroRepository.save(m);
+	    assertThrows(Exception.class, () -> {
+	    	membroRepository.save(m);
+	    });
+	}
+	
+	@Test
+	@DisplayName("teste de persistencia da classe membro, com projeto e pessoa.")
+	void membroComPessoaEProjeto() {
+		Pessoa pessoa = createPessoa("nome qualquer", new Date(), "12345678901", true);
+		Projeto projeto = createProjeto();
+		Membro membro = new Membro();
+		membro.setMembro(pessoa);
+		membro.setProjeto(projeto);
+		membro = membroRepository.save(membro);
+		
+		assertNotNull(membro.getId());
+		assertNotNull(membro.getMembro().getId());
+		assertNotNull(membro.getProjeto().getId());
+	}
+	
+	private Pessoa createPessoa(String nome, Date dataNascimento, String cpf, Boolean isFuncionario) {
+		Pessoa p = new Pessoa();
+		p.setNome(nome);
+		p.setDataNascimento(dataNascimento);
+		p.setCpf(cpf);
+		p.setIsFuncionario(isFuncionario);
+		return em.persist(p);
+	}
+	
+	private Projeto createProjeto() {
+		Projeto p = new Projeto();
+		return em.persist(p);
 	}
 
 }

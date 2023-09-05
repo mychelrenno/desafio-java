@@ -24,18 +24,18 @@ public class Pessoa {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "nome")
+	@Column(name = "nome", nullable = false)
 	private String nome;
 	
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
-	@Column(name = "data_nascimento")
+	@Column(name = "data_nascimento", nullable = false)
 	private Date dataNascimento;
 	
-	@Column(name = "cpf")
+	@Column(name = "cpf", nullable = false, length = 11)
 	private String cpf;
 	
-	@Column(name = "is_funcionario")
+	@Column(name = "is_funcionario", nullable = false)
 	private Boolean isFuncionario;
 	
 	
