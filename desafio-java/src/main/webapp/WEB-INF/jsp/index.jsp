@@ -40,7 +40,7 @@
 			document.location = "/projeto/editar?id=" + id;
 		}
 		function excluir(id) {
-		   jQuery.ajax({
+		   $.ajax({
 		        method: 'delete',
 		        url: "/projeto/excluir",
 		        data : {id: id},

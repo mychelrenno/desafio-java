@@ -13,9 +13,15 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "pessoa")
 public class Pessoa {
@@ -38,6 +44,4 @@ public class Pessoa {
 	@Column(name = "is_funcionario", nullable = false)
 	private Boolean isFuncionario;
 	
-	
-
 }

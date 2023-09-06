@@ -55,11 +55,7 @@ class MembroRepositoryTest {
 	}
 	
 	private Pessoa createPessoa(String nome, Date dataNascimento, String cpf, Boolean isFuncionario) {
-		Pessoa p = new Pessoa();
-		p.setNome(nome);
-		p.setDataNascimento(dataNascimento);
-		p.setCpf(cpf);
-		p.setIsFuncionario(isFuncionario);
+		Pessoa p = Pessoa.builder().nome(nome).dataNascimento(dataNascimento).cpf(cpf).isFuncionario(isFuncionario).build();
 		return em.persist(p);
 	}
 	

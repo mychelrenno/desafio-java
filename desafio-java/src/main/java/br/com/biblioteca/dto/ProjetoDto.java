@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
@@ -34,6 +35,7 @@ public class ProjetoDto {
 	@Temporal(TemporalType.DATE)
 	private Date dataFim;
 	
+	@Size(max = 255)
 	private String descricao;
 	
 	private StatusEnum status;

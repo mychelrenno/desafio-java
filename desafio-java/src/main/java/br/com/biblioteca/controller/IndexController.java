@@ -24,10 +24,7 @@ public class IndexController {
 	@GetMapping
 	public String home(Model model, HttpServletRequest httpServletRequest) {
 		
-		
 		model.addAttribute("projetoList", projetoService.buscarTodosOrderById());
-//		List<Projeto> lista = new ArrayList<>();
-//		model.addAttribute("projetoList", lista);
 		
 		return "index";
 	}

@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
@@ -52,6 +53,7 @@ public class Projeto {
 	@Column(name = "data_fim")
 	private Date dataFim;
 	
+	@Size(max = 255)
 	@Column(name = "descricao")
 	private String descricao;
 	

@@ -1,6 +1,7 @@
 package br.com.biblioteca.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.biblioteca.dto.ProjetoDto;
-import br.com.biblioteca.enums.RiscoEnum;
-import br.com.biblioteca.enums.StatusEnum;
 import br.com.biblioteca.model.Projeto;
 import br.com.biblioteca.service.PessoaService;
 import br.com.biblioteca.service.ProjetoService;
@@ -42,7 +41,7 @@ public class ProjetoController {
 	}
 	
 	@PostMapping("/salvar")
-	public String salvar(Model model, HttpServletRequest httpServletRequest, @ModelAttribute("projeto") ProjetoDto projetoDto) {
+	public String salvar(Model model, HttpServletRequest httpServletRequest, @ModelAttribute("projeto") @Valid ProjetoDto projetoDto) {
 		
 		projetoService.salvar(projetoDto);
 		
