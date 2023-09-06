@@ -31,6 +31,9 @@
      	label {
      		font-weight: bold;
      	}
+     	.form-error {
+     		color:red;
+     	}
     </style>
     
 </head>
@@ -43,7 +46,7 @@
 		<div class="form-group">
 			<label for="nome">Nome</label>
 			<form:input id="nome" class="form-control" path="nome"/>
-			<form:errors path="nome"/>
+			<form:errors path="nome" cssClass="form-error"/>
 		</div>
 		
 		<div class="form-group">
@@ -52,37 +55,37 @@
 				<form:option value="">--SELECIONE--</form:option>
 				<form:options items="${gerenteList}" itemValue="id" itemLabel="nome"></form:options>
 			</form:select>
-			<form:errors path="gerente"/>
+			<form:errors path="gerente" cssClass="form-error"/>
 		</div>
 		
 		<div class="form-group">
 			<label for="dataInicio">Data de início</label>
 			<form:input id="dataInicio" class="form-control" type="date" path="dataInicio" />
-			<form:errors path="dataInicio"/>
+			<form:errors path="dataInicio" cssClass="form-error"/>
 		</div>
 		
 		<div class="form-group">
 			<label for="dataPrevisao">Data da previsão</label>
 			<form:input id="dataPrevisao" class="form-control" type="date" path="dataPrevisao"/>
-			<form:errors path="dataPrevisao"/>
+			<form:errors path="dataPrevisao" cssClass="form-error"/>
 		</div>
 		
 		<div class="form-group">
 			<label for="dataFim">Data do término</label>
 			<form:input if="dataFim" class="form-control" type="date" path="dataFim" />
-			<form:errors path="dataFim"/>
+			<form:errors path="dataFim" cssClass="form-error"/>
 		</div>
 		
 		<div class="form-group">
 			<label for="orcamento">Orçamento</label>
 			<form:input id="orcamento" class="form-control" placeholder="12345678,90" path="orcamento"/>
-			<form:errors path="orcamento"/>
+			<form:errors path="orcamento" cssClass="form-error"/>
 		</div>
 		
 		<div class="form-group">
 			<label for="descricao">Descrição</label>
-			<form:textarea id="descricao" class="form-control" path="descricao"/>
-			<form:errors path="descricao"/>
+			<form:textarea id="descricao" class="form-control"  path="descricao"/>
+			<form:errors path="descricao" cssClass="form-error"/>
 		</div>
 		
 		<div class="form-group">
@@ -91,7 +94,7 @@
 				<form:option value="">--SELECIONE--</form:option>
 				<form:options itemLabel="descricao"></form:options>
 			</form:select>
-			<form:errors path="risco"/>
+			<form:errors path="risco" cssClass="form-error"/>
 		</div>
 		
 		<div class="form-group">
@@ -100,7 +103,7 @@
 				<form:option value="">--SELECIONE--</form:option>
 				<form:options itemLabel="descricao"></form:options>
 			</form:select>
-			<form:errors path="status"/>
+			<form:errors path="status" cssClass="form-error"/>
 		</div>
 		
 		<div class="form-group">
@@ -108,7 +111,7 @@
 			<form:select id="membros" class="form-control" multiple="true" path="membros">
 				<form:options items="${membroList}" itemValue="id" itemLabel="nome"></form:options>
 			</form:select>
-			<form:errors path="membros"/>
+			<form:errors path="membros" cssClass="form-error"/>
 		</div>
 		
 		<div class="buttons">

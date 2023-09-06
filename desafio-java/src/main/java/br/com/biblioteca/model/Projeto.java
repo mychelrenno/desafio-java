@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -38,22 +39,18 @@ public class Projeto {
 	@Column(name = "nome")
 	private String nome;
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
 	@Column(name = "data_inicio")
 	private Date dataInicio;
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
 	@Column(name = "data_previsao")
 	private Date dataPrevisao;
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
 	@Column(name = "data_fim")
 	private Date dataFim;
 	
-	@Size(max = 255)
 	@Column(name = "descricao")
 	private String descricao;
 	
@@ -61,7 +58,6 @@ public class Projeto {
 	@Column(name = "status")
 	private StatusEnum status;
 	
-	@NumberFormat(style=Style.CURRENCY, pattern = "#,###,##0.00")
 	@Column(name = "orcamento")
 	private BigDecimal orcamento;
 	

@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -41,7 +42,11 @@ public class ProjetoController {
 	}
 	
 	@PostMapping("/salvar")
-	public String salvar(Model model, HttpServletRequest httpServletRequest, @ModelAttribute("projeto") @Valid ProjetoDto projetoDto) {
+	public String salvar(@ModelAttribute("projeto") @Valid ProjetoDto projetoDto, BindingResult bindingResult, Model model) {
+		
+        if(bindingResult.hasErrors()) {
+            return "projeto";
+        }
 		
 		projetoService.salvar(projetoDto);
 		

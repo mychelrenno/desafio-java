@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -21,21 +22,19 @@ public class ProjetoDto {
 	
 	private Long id;
 
+	@NotEmpty(message = "O nome nao pode ser vazio.")
 	private String nome;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Temporal(TemporalType.DATE)
 	private Date dataInicio;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Temporal(TemporalType.DATE)
 	private Date dataPrevisao;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Temporal(TemporalType.DATE)
 	private Date dataFim;
 	
-	@Size(max = 255)
+	@Size(max = 255, message = "O tamanho máximo da descrição é de 255 caracteres.")
 	private String descricao;
 	
 	private StatusEnum status;
@@ -48,13 +47,5 @@ public class ProjetoDto {
 	private Long gerente;
 	
 	private Set<Long> membros;
-	
-	private Date dataInicioF;
-	
-	private Date dataPrevisaoF;
-	
-	private Date dataFimF;
-	
-	private BigDecimal orcamentoF;
 	
 }
