@@ -1,5 +1,7 @@
 package br.com.biblioteca.controller;
 
+import javax.validation.Valid;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +22,7 @@ public class PessoaController {
 	private PessoaService pessoaService;
 	
 	@PostMapping("/adicionar")
-	public ResponseEntity<Object> name(@RequestBody final PessoaDto pessoaDto) {
+	public ResponseEntity<Object> name(@RequestBody @Valid final PessoaDto pessoaDto) {
 		
 		ModelMapper modelMapper = new ModelMapper();
 		Pessoa pessoa = modelMapper.map(pessoaDto, Pessoa.class);

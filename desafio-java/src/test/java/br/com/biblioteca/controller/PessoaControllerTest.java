@@ -51,10 +51,10 @@ class PessoaControllerTest {
 		var response = mvc.perform(
 				MockMvcRequestBuilders.post("/pessoa/adicionar")
 				.contentType(MediaType.APPLICATION_JSON)
-				.content( pessoaDtoJson.write(new PessoaDto("", "1990-10-26", "1234567890123456", true)).getJson() )
+				.content( "{\"nome\":\"Mychelgruillo\",\"dataNascimento\":\"1990-10-26\",\"cpf\":\"06888549909654654\",\"isFuncionario\":true}" )
 				).andReturn().getResponse();
 		
-		assertThat(response.getStatus()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR.value());
+		assertThat(response.getStatus()).isEqualTo(HttpStatus.BAD_REQUEST.value());
 	}
 
 }
